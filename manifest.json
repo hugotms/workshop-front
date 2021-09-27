@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "ZENWEB",
+  "description": "Une extension chrome qui permet à l'utilisateur de voir si le site:\nest sécurisé\na déjà un historique de fuite de données\nest légitime (carglass.fr et non pas carglass.io)\na déjà été signalé (voir les commentaires)\na un score élevé (100%, 98,7%) par rapport à notre référentiel sécurité (parce qu'on pèse dans le game et qu'on crée notre propre référentiel \uD83D\uDE0E)\npermet de ",
+  "version": "1",
+  "browser_action": {
+    "default_icon": "icon_sans_fond_plus_nom.png",
+    "default_popup": "popup.html"
+  }
+}
