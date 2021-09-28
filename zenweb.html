@@ -12,13 +12,28 @@
         <img src="icon_sans_fond_plus_nom.png" style="height: 50px">
         <p>ZENWEB</p>
         <div style="width: 100px"></div>
-        <input id="buttonClose" type="image" src="exit.svg" alt="exit" width="30" height="30">
+        <div class="pourcentage">
+            <p id="pour100" class="txtPourcent">
+            </p>
+        </div>
     </div>
     <div class="row">
-
+        <p id="URLC"></p><img id="URLNC" hidden src="alert.png" width="40" height="40">
     </div>
     <div class="row">
-        <button>Signaler</button>
+        <div id="btnEnSavoirPlus">
+            <button class="btnEnSavoirPlus button">En savoir plus</button>
+        </div>
+    </div>
+    <div id="Signaler" hidden>
+        <div class="row" style="margin: 0px 10px;">
+            <div class="justifier">
+                Vous pouvez signaler le site aupres de ZENWEB afin d’avertir les autres utilisateurs
+            </div>
+        </div>
+        <div class="row">
+            <button class="btnSignaler button" id="buttonSignaler">Signaler</button>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="zenweb.js"></script>

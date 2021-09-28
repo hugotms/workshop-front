@@ -1,5 +1,5 @@
 body {
-    width: 200px;
+    width: 300px;
     height: auto;
     border-radius: 48px;
 }
@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 20px;
 }
 
 .column {
@@ -21,4 +22,37 @@ body {
     height: 30px;
     background: url(exit.svg) 0 0 no-repeat;
     text-indent: -999em;
+}
+
+.pourcentage {
+    padding-bottom: 10px;
+    width: 75px;
+    height: 28px;
+    border-radius: 20px;
+    background-color: #E76F51;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btnEnSavoirPlus {
+    background-color: #264653;
+    color: white;
+}
+.btnSignaler {
+    background-color: #E9C46A;
+    color: black;
+}
+.button {
+    border: none;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 20px;
+}
+.justifier {
+    text-align: justify;
+    text-justify: inter-word;
 }
