@@ -5,9 +5,6 @@
   "version": "1",
   "browser_action": {
     "default_icon": "icon_sans_fond_plus_nom.png",
-    "default_popup": "zenweb.html"
-  },
-  "permissions": [
-    "Tabs"
-  ]
+    "default_popup": "popup-milieu.html"
+  }
 }
