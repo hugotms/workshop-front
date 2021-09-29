@@ -16,14 +16,6 @@ body {
     flex-direction: column;
 }
 
-.btnExit {
-    display: block;
-    width: 30px;
-    height: 30px;
-    background: url(exit.svg) 0 0 no-repeat;
-    text-indent: -999em;
-}
-
 .pourcentage {
     padding-bottom: 10px;
     width: 75px;
@@ -39,10 +31,12 @@ body {
     background-color: #264653;
     color: white;
 }
+
 .btnSignaler {
     background-color: #E9C46A;
     color: black;
 }
+
 .button {
     border: none;
     padding: 10px 30px;
@@ -52,6 +46,7 @@ body {
     font-size: 14px;
     border-radius: 20px;
 }
+
 .justifier {
     text-align: justify;
     text-justify: inter-word;
