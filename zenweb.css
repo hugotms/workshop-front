@@ -16,6 +16,15 @@ body {
     flex-direction: column;
 }
 
+.lien button {
+    background-color: #4CAF50;
+    color: white;
+    width: 150px;
+    height: 34px;
+    border-radius: 50px;
+    border: none;
+}
+
 .pourcentage {
     padding-bottom: 10px;
     width: 75px;

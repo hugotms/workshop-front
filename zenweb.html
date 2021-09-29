@@ -6,33 +6,55 @@
     <title>ZENWEB</title>
 </head>
 <body id="body">
-<div class="column">
-
-    <div class="row">
-        <img src="icon_sans_fond_plus_nom.png" style="height: 50px">
-        <p>ZENWEB</p>
-        <div style="width: 100px"></div>
-        <div class="pourcentage">
-            <p id="pour100" class="txtPourcent">
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <p id="URLC"></p><img id="URLNC" hidden src="alert.png" width="40" height="40">
-    </div>
-    <div class="row">
-        <div id="btnEnSavoirPlus">
-            <button class="btnEnSavoirPlus button">En savoir plus</button>
-        </div>
-    </div>
-    <div id="Signaler" hidden>
-        <div class="row" style="margin: 0px 10px;">
-            <div class="justifier">
-                Vous pouvez signaler le site aupres de ZENWEB afin d’avertir les autres utilisateurs
+<div id="popupzenweb">
+    <div class="column">
+        <div class="row">
+            <img src="icon_sans_fond_plus_nom.png" style="height: 50px">
+            <p>ZENWEB</p>
+            <div style="width: 100px"></div>
+            <div class="pourcentage">
+                <p id="pour100" class="txtPourcent">
+                </p>
             </div>
         </div>
         <div class="row">
-            <button class="btnSignaler button" id="buttonSignaler">Signaler</button>
+            <p id="URLC"></p><img id="URLNC" hidden src="alert.png" width="40" height="40">
+        </div>
+        <div class="row">
+            <div id="btnEnSavoirPlus">
+                <button class="btnEnSavoirPlus button">En savoir plus</button>
+            </div>
+        </div>
+        <div id="Signaler" hidden>
+            <div class="row" style="margin: 0px 10px;">
+                <div class="justifier">
+                    Vous pouvez signaler le site aupres de ZENWEB afin d’avertir les autres utilisateurs
+                </div>
+            </div>
+            <div class="row">
+                <button class="btnSignaler button" id="buttonSignaler">Signaler</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="alert" hidden>
+    <div class="column">
+        <div>
+            <div class="row">
+                <img src="icon_sans_fond_plus_nom.png" style="height:50px">
+                <p>ZENWEB</p>
+            </div>
+        </div>
+        <div class="row">
+            <img src="alert.png" style="height: 50px">
+        </div>
+        <div class="row">
+            <p> Attention! Vous etes sur un site non protegé.</p>
+        </div>
+        <div class="row">
+            <div class="lien">
+                <button>Lien correct</button>
+            </div>
         </div>
     </div>
 </div>
