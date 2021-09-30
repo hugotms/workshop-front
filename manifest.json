@@ -10,12 +10,6 @@
   },
   "permissions": [
     "tabs",
-    "storage",
-    "webNavigation"
-  ],
-  "background": {
-    "scripts": ["background.js"],
-    "background_page": "background.html",
-    "persistent": true
-  }
+    "storage"
+  ]
 }
