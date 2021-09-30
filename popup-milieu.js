@@ -1,3 +1,4 @@
+/*
 // Get the modal
 let popup = document.getElementById("mypopup");
 
@@ -15,4 +16,28 @@ window.onclick = function(event) {
     if (event.target == popup) {
         popup.style.display = "none";
     }
+}
+*/
+
+/* boutton evenement*/
+
+document.getElementById("liencorrect").addEventListener("click",checksite);
+
+/*fonction recuperation */
+
+function checksite() {
+    fetch("https://api.tisamo.fr/workshop/getsite",
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+        })
+        .then((res) => {
+            alert(' aucune erreur');
+        })
+        .catch((res) => {
+            alert(res);
+        })
 }
