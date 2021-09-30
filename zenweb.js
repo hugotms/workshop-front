@@ -1,42 +1,76 @@
 let URLC = false;
-const Pourcentage = 57;
+let pourcentage = 57;
 let idUser = null;
 
-LoadData = async () => {
+LoadID = async () => {
+    console.log('url')
     try {
         const url = 'https://api.tisamo.fr/workshop/getid'
         const res = await fetch(url);
         const data = await res.json();
-        chrome.storage.sync.set({'idUser': data.data}, function () {});
+        chrome.storage.sync.set({'idUser': data.data}, function () {
+            console.log('test', data.data);
+        });
     } catch (e) {
-        console.log(e);
+        console.log('toto', e);
     }
+}
+
+async function LoadStats(url) {
+    return await fetch("https://api.tisamo.fr/workshop/getsite",
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify({url: url})
+        })
+        .then(res => res.json())
+        .then(r => r)
+        .catch((res) => {
+            alert(res);
+        })
 }
 
 
 chrome.storage.sync.get(['idUser'], function (items) {
     idUser = items.idUser;
-    if (!items) {
-        LoadData().then(r => r);
+    if (!idUser) {
+        LoadID().then(r => r);
     }
 });
 console.log(idUser)
 
-document.getElementById("pour100").innerText = Pourcentage + "%";
 document.getElementById("btnEnSavoirPlus").addEventListener("click", enSavoirPlus);
 document.getElementById("buttonSignaler").addEventListener("click", Signalement);
 
-chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
-    console.log('query: ' + idUser);
+chrome.tabs.query({currentWindow: true, active: true}, async (tabs) => {
     let URLs = tabs[0].url;
     let URL = URLs.split('/');
     URL = URL[0] + '//' + URL[2];
-    if (URLC) {
-        message = URL + " est conforme."
-    } else if (!URLC) {
-        message = URL + " n\'est pas conforme."
-        document.getElementById('URLNC').hidden = false;
+    const stats = await LoadStats(URL);
+    switch (stats.statusCode) {
+        case 200:
+            if (stats.data.status) {
+                message = stats.data.status;
+            } else {
+                message = "Fuite de données detecté sur " + stats.data.breachName;
+            }
+            pourcentage = stats.data.score;
+            pourcentage = Math.trunc(pourcentage);
+            document.getElementById("pour100").innerText = pourcentage + "%";
+            break;
+        case 402:
+            message = stats.data;
+            document.getElementById('URLNC').hidden = false;
+            break;
     }
+    // if (stats.statusCode === 200) {
+    //     message = URL + " est conforme."
+    // } else if (stats.statusCode === 402) {
+    //     message = URL + " est inconnu."
+    // }
     document.getElementById("URLC").innerText = message;
 
 });
@@ -44,9 +78,6 @@ chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
 function enSavoirPlus() {
     document.getElementById("Signaler").hidden = false;
     document.getElementById("btnEnSavoirPlus").hidden = true;
-    chrome.storage.sync.get(['idUser'], function (items) {
-        console.log(items);
-    });
 }
 
 
@@ -55,6 +86,7 @@ function Signalement() {
         let URLs = tabs[0].url;
         let URL = URLs.split('/');
         URL = URL[0] + '//' + URL[2];
+        console.log(idUser, URL);
         fetch("https://api.tisamo.fr/workshop/report",
             {
                 headers: {
