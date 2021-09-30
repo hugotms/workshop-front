@@ -1,7 +1,11 @@
 body {
     width: 300px;
     height: auto;
-    border-radius: 48px;
+    border: 1px black solid;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+
 }
 
 .row {
@@ -17,12 +21,13 @@ body {
 }
 
 .lien button {
-    background-color: #4CAF50;
+    background-color: #2A9D8F;
     color: white;
     width: 150px;
     height: 34px;
     border-radius: 50px;
     border: none;
+    margin-bottom: 10px;
 }
 
 .pourcentage {
@@ -30,20 +35,33 @@ body {
     width: 75px;
     height: 28px;
     border-radius: 20px;
-    background-color: #E76F51;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    visibility: hidden;
 }
 
 .btnEnSavoirPlus {
     background-color: #264653;
     color: white;
+    margin-bottom: 10px;
 }
 
 .btnSignaler {
     background-color: #E9C46A;
     color: black;
+    margin-bottom: 10px;
+}
+.low{
+    background-color: #E76F51;
+}
+
+.medium{
+    background-color: #E9C46A;
+}
+
+.high{
+    background-color: #2A9D8F;
 }
 
 .button {
@@ -54,6 +72,7 @@ body {
     display: inline-block;
     font-size: 14px;
     border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .justifier {

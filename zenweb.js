@@ -1,6 +1,6 @@
-let URLC = false;
 let pourcentage = 57;
 let idUser = null;
+let stats;
 
 LoadID = async () => {
     console.log('url')
@@ -40,16 +40,18 @@ chrome.storage.sync.get(['idUser'], function (items) {
         LoadID().then(r => r);
     }
 });
-console.log(idUser)
+
 
 document.getElementById("btnEnSavoirPlus").addEventListener("click", enSavoirPlus);
 document.getElementById("buttonSignaler").addEventListener("click", Signalement);
 
+
 chrome.tabs.query({currentWindow: true, active: true}, async (tabs) => {
     let URLs = tabs[0].url;
+    tabs = tabs[0]
     let URL = URLs.split('/');
     URL = URL[0] + '//' + URL[2];
-    const stats = await LoadStats(URL);
+    stats = await LoadStats(URL);
     switch (stats.statusCode) {
         case 200:
             if (stats.data.status) {
@@ -59,18 +61,30 @@ chrome.tabs.query({currentWindow: true, active: true}, async (tabs) => {
             }
             pourcentage = stats.data.score;
             pourcentage = Math.trunc(pourcentage);
+            if (pourcentage > 65) {
+                document.getElementById("pourcent").className = "high pourcentage";
+            } else if (pourcentage < 33) {
+                document.getElementById("pourcent").className = "low pourcentage";
+            } else {
+                document.getElementById("pourcent").className = "medium pourcentage";
+            }
             document.getElementById("pour100").innerText = pourcentage + "%";
+            document.getElementById("pourcent").style.visibility = "visible";
             break;
         case 402:
             message = stats.data;
             document.getElementById('URLNC').hidden = false;
             break;
+        case 201:
+            message = stats.data;
+            document.getElementById("alert").hidden = false;
+            document.getElementById("popupzenweb").hidden = true;
+            document.getElementById("redirection").addEventListener("click", function () {
+                chrome.tabs.create({url: message});
+                chrome.tabs.remove(tabs.id);
+            });
+            break;
     }
-    // if (stats.statusCode === 200) {
-    //     message = URL + " est conforme."
-    // } else if (stats.statusCode === 402) {
-    //     message = URL + " est inconnu."
-    // }
     document.getElementById("URLC").innerText = message;
 
 });
@@ -105,4 +119,9 @@ function Signalement() {
     })
 }
 
-
+function Redirection(tab, url) {
+    console.log('tabs: ', tab.id);
+    console.log('url: ', url);
+    //chrome.tabs.create({url: url});
+    //chrome.tabs.remove(tab.id);
+}
