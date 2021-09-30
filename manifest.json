@@ -5,9 +5,17 @@
   "version": "1",
   "browser_action": {
     "default_icon": "icon_sans_fond_plus_nom.png",
-    "default_popup": "zenweb.html"
+    "default_popup": "zenweb.html",
+    "default_title": "ZenWeb"
   },
   "permissions": [
-    "Tabs"
-  ]
+    "tabs",
+    "storage",
+    "webNavigation"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "background_page": "background.html",
+    "persistent": true
+  }
 }

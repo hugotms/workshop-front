@@ -1,13 +1,18 @@
 body {
-    width: 200px;
+    width: 300px;
     height: auto;
-    border-radius: 48px;
+    border: 1px black solid;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+
 }
 
 .row {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 20px;
 }
 
 .column {
@@ -15,10 +20,62 @@ body {
     flex-direction: column;
 }
 
-.btnExit {
-    display: block;
-    width: 30px;
-    height: 30px;
-    background: url(exit.svg) 0 0 no-repeat;
-    text-indent: -999em;
+.lien button {
+    background-color: #2A9D8F;
+    color: white;
+    width: 150px;
+    height: 34px;
+    border-radius: 50px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.pourcentage {
+    padding-bottom: 10px;
+    width: 75px;
+    height: 28px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.btnEnSavoirPlus {
+    background-color: #264653;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.btnSignaler {
+    background-color: #E9C46A;
+    color: black;
+    margin-bottom: 10px;
+}
+.low{
+    background-color: #E76F51;
+}
+
+.medium{
+    background-color: #E9C46A;
+}
+
+.high{
+    background-color: #2A9D8F;
+}
+
+.button {
+    border: none;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.justifier {
+    text-align: justify;
+    text-justify: inter-word;
 }
